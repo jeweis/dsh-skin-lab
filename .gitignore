@@ -1,0 +1,13 @@
+# Built output. Both files are deterministic functions of the committed sources:
+#
+#   node scripts/embed-assets.mjs   src/assets.js   <- assets/*.jpg + assets/lightness.json
+#   node scripts/build.mjs          lib/            <- src/
+#
+# `lib/client.js` is a single file carrying every artwork as base64, so it is large and
+# changes on every art edit. Committing it would put a 3.8 MB blob in the history for each
+# image tweak, and it rebuilds byte-for-byte from what is already here.
+#
+# `scripts/prepare-assets.py` is NOT needed for that: it only turns the original PNG
+# masters (which are not in this repo) into assets/*.jpg, and those are committed.
+lib/
+src/assets.js

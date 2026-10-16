@@ -1,0 +1,8 @@
+{
+  // Negative control: same options as the conformance probe, but only the
+  // deliberately wrong fixture. This configuration is expected to FAIL.
+  "extends": "./tsconfig.probe.json",
+  "include": [
+    "negative/wrong-slot-key.ts"
+  ]
+}

@@ -1,0 +1,5 @@
+# dsh-skin-lab bundle patch: one composition row, referenced by package name so
+# Node's module resolution finds the installed code in the profile's node_modules.
+- insert:
+    - id: skin-lab
+      name: 'dsh-skin-lab'

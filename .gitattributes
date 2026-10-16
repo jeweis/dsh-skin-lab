@@ -1,0 +1,8 @@
+# Everything in this repo is authored and written with LF. Without this, a Windows
+# checkout rewrites the line endings of every text file and the next diff is the whole
+# file — which is how a real change gets lost in review.
+* text=auto eol=lf
+
+# Binary art must never be line-ending converted or diffed as text.
+*.jpg binary
+*.png binary

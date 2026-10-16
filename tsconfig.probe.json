@@ -1,0 +1,43 @@
+{
+  // Conformance probe against the declarations of the DSH installed on this
+  // machine (profiles/node_modules, currently 0.2.0-rc.2 + cordis 4.0.4).
+  // Update these paths when the installed version changes.
+  //
+  // `checkJs` is the whole point: it typechecks src/*.js itself, so the real
+  // `apply()` body goes through the installed `slots.register` overloads.
+  "compilerOptions": {
+    "noEmit": true,
+    "strict": true,
+    "target": "es2024",
+    "lib": ["ES2024", "DOM"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "checkJs": true,
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true,
+    "types": [],
+    "paths": {
+      "@deepseek-ai/cordis": [
+        "D:/Jewei/app/.dsh/profiles/node_modules/@deepseek-ai/cordis/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-theme/client": [
+        "D:/Jewei/app/.dsh/profiles/node_modules/@deepseek-ai/dsh-client-ui-theme/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-slots": [
+        "D:/Jewei/app/.dsh/profiles/node_modules/@deepseek-ai/dsh-client-ui-slots/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-renderer/client": [
+        "D:/Jewei/app/.dsh/profiles/node_modules/@deepseek-ai/dsh-client-ui-renderer/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-settings/client": [
+        "D:/Jewei/app/.dsh/profiles/node_modules/@deepseek-ai/dsh-client-ui-settings/lib/types/client/index.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "types/**/*.ts",
+    "types/**/*.d.ts",
+    "src/**/*.js"
+  ]
+}

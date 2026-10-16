@@ -1,0 +1,44 @@
+{
+  "name": "dsh-skin-lab",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Themes for DeepSeek Harness: palette x background artwork x structural elements, applied through one ctx.theme.overrideTokens layer.",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-theme"
+      ],
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib",
+    "src",
+    "assets",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node verify.mjs",
+    "typecheck": "tsc -p tsconfig.probe.json",
+    "typecheck:negative": "tsc -p tsconfig.negative.json",
+    "assets:embed": "node scripts/embed-assets.mjs"
+  }
+}
