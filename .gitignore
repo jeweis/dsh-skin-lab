@@ -1,13 +1,28 @@
-# Built output. Both files are deterministic functions of the committed sources:
+# `src/assets.js` and `lib/` are generated output:
 #
 #   node scripts/embed-assets.mjs   src/assets.js   <- assets/*.jpg + assets/lightness.json
 #   node scripts/build.mjs          lib/            <- src/
 #
-# `lib/client.js` is a single file carrying every artwork as base64, so it is large and
-# changes on every art edit. Committing it would put a 3.8 MB blob in the history for each
-# image tweak, and it rebuilds byte-for-byte from what is already here.
+# Both are deterministic functions of the committed sources, and both used to be
+# ignored because `lib/client.js` is a single 3.8 MB file carrying every artwork as
+# base64, so committing it grows the history on every art edit.
 #
-# `scripts/prepare-assets.py` is NOT needed for that: it only turns the original PNG
-# masters (which are not in this repo) into assets/*.jpg, and those are committed.
-lib/
-src/assets.js
+# They are committed anyway, because this package is installed as a git dependency
+# (`github:jeweis/dsh-skin-lab`) and `package.json` points `main` and
+# `exports["./client"]` straight at `lib/`. A git dependency is consumed as a clone:
+# nothing rebuilds it, and since pnpm 10.26 a git-hosted dependency is blocked from
+# running `prepare` unless it is allowlisted (pnpm/pnpm#10288), so a `prepare` script
+# is not a way out either. Ignoring the build output therefore ships a package whose
+# entry point does not exist.
+#
+# Cost of committing: history growth on art edits. Cost of not committing: the plugin
+# cannot be installed at all.
+#
+# `scripts/prepare-assets.py` is NOT needed for any of that: it only turns the original
+# PNG masters (which are not in this repo) into assets/*.jpg, and those are committed.
+
+# Python bytecode from scripts/prepare-assets.py and scripts/analyze-render.py
+__pycache__/
+node_modules/
+*.log
+.DS_Store

@@ -1,6 +1,6 @@
 {
   "name": "dsh-skin-lab",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Themes for DeepSeek Harness: palette x background artwork x structural elements, applied through one ctx.theme.overrideTokens layer.",
   "license": "MIT",
@@ -36,6 +36,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
+    "prepare": "node scripts/embed-assets.mjs && node scripts/build.mjs",
     "verify": "node verify.mjs",
     "typecheck": "tsc -p tsconfig.probe.json",
     "typecheck:negative": "tsc -p tsconfig.negative.json",
