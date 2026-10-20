@@ -28,17 +28,10 @@ DeepSeek Harness 主题插件：提供 10 套内置主题（6 套抽象色彩场
 
 ## 📦 本地开发（可选）
 
-构建产物 `lib/` 与 `src/assets.js` **已随仓库提交**，因此从 GitHub 安装时无需构建。
-
 ```bash
-# 一次性重建产物：内嵌 assets/*.jpg → src/assets.js，再由 src/ 生成 lib/
-node scripts/embed-assets.mjs
+# 构建插件
 node scripts/build.mjs
 
 # 运行验证
 node verify.mjs
 ```
-
-改动 `assets/` 下的图片后，请重新执行上面两条命令并把重新生成的 `src/assets.js`、`lib/` 一起提交：
-本插件以 git 依赖方式安装，而 pnpm 自 10.26 起默认禁止 git 依赖执行 `prepare`（[pnpm/pnpm#10288](https://github.com/pnpm/pnpm/pull/10288)），
-所以安装时不会自动构建——仓库里缺了 `lib/`，插件就会因为入口文件不存在而无法加载。

@@ -1,8 +1,9 @@
 {
   "name": "dsh-skin-lab",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "description": "Themes for DeepSeek Harness: palette x background artwork x structural elements, applied through one ctx.theme.overrideTokens layer.",
+  "//": "No `prepare`/`postinstall` on purpose. pnpm >= 10.26 refuses to install a git-hosted dependency that declares `prepare` unless it is allowlisted in `allowBuilds` (ERR_PNPM_GIT_DEP_PREPARE_NOT_ALLOWED), so declaring one does not make the build run — it makes the install fail. `lib/` and `src/assets.js` are committed instead; after editing `assets/` or `src/`, run `node scripts/embed-assets.mjs && node scripts/build.mjs` and commit the result.",
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
@@ -36,7 +37,6 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
-    "prepare": "node scripts/embed-assets.mjs && node scripts/build.mjs",
     "verify": "node verify.mjs",
     "typecheck": "tsc -p tsconfig.probe.json",
     "typecheck:negative": "tsc -p tsconfig.negative.json",
